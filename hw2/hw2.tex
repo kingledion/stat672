@@ -1,5 +1,9 @@
 \documentclass{article}
 \usepackage{amsmath}
+\usepackage[margin=0.5in]{geometry}
+
+\setlength{\parskip}{\baselineskip}%
+\setlength{\parindent}{0pt}%
 
 \title{Homework 2}
 \author{Daniel Hartig}
@@ -8,8 +12,28 @@
 \begin{document}
 \maketitle
 
-\section*{Problem 1}
+\section*{Problem 1a}
 
-For $x < 0.2$ and $x > 0.8$ minimum risk of misclassification is $\text{min}(0.9, 1-0.9) = 0.1$. And stuff
+The Bayes classification function ($f^*$) for a piecewise function is the most likely outcome for each case. Thus for
+$$ P(Y = 1|X = x) = \begin{cases} 
+0.9,& x < 0.2, \\
+0.2,& 0.2 < x < 0.8,\\
+0.9,& x > 0.8,\\ \end{cases} $$ then
+$$ f^* = \begin{cases} 
+1,& x < 0.2, \\
+-1,& 0.2 < x < 0.8,\\
+1,& x > 0.8.\\ \end{cases} $$ The risk of the Bayes classification function is the probability the classification function not equalling the actual distribution of Y, or
+$$ R(f^*) = \begin{cases} 
+0.1,& x < 0.2, \\
+0.2,& 0.2 < x < 0.8,\\
+0.1,& x > 0.8.\\ \end{cases} $$
+Integrating the Bayes risk function over the space ${0, 1}$ gives $0.1\cdot0.2 + 0.2\cdot0.6+0.1\cdot0.2 = 0.16$.
 
+\section*{Problem 1b}
+
+In order for the excess risk to be zero, the classifier must have the same sign as the Bayes classification function ($f^*$) in the entire domain of $\mathcal{X}$, which is $[0, 1]$. For the specific $f^*$ given in Problem 1a, there are two changes of sign between 0 and 1. Since our function space ($\mathcal{F}$) is all polynomial functions of degree $d$, then this polynomial must have exactly two roots in the range $[0, 1]$.
+
+For any polynomial with degree $d < 2$, there cannot be 2 roots, the classifier cannot have the same sign as $f^*$ on the domain of $\mathcal{X}$, and thus the excess risk cannot be zero.
+
+For the set of all polynomial with degree $d >2$ there exists at least at least one polynomial with exactly two roots in the range $[0, 1]$. For $d=2$ and $f^*$ given above, any polynomial with roots $0.2$ and $0.8$ and no other roots in $[0, 1]$ will have excess risk equal to zero.
 \end{document}
