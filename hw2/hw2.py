@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Spyder Editor
-
-This is a temporary script file.
-"""
 
 import numpy as np, matplotlib.pyplot as plt
 from sklearn.linear_model import LogisticRegression
@@ -27,7 +22,7 @@ def prob1e():
     data = {d: [] for d in [1, 2, 5]}
     for d in [1, 2, 5]:
         for n in [10, 20, 50, 100, 200, 500, 1000]:
-            scores = [get_scores(n, d) for _ in range(1000)]
+            scores = [get_scores(n, d) for _ in range(50)]
             data[d].append((n, *[np.mean(x) for x in zip(*scores)]))
             
 
@@ -54,7 +49,7 @@ def get_scores(n, d):
         m = logit_model(*training)
     
     erremp = m.score(*training)
-    errgen = m.score(*gen_sample(n, d))
+    errgen = m.score(*gen_sample(1000, d))
     
     return erremp, errgen
     
@@ -74,7 +69,7 @@ def gen_sample(n, d = 0):
     y = np.select([(x<0.2)+(x>0.8), True], [y<0.9, y<0.2])
     
     if d > 0:
-        x = np.stack([x**d for d in range(4)], axis=1)
+        x = np.stack([x**d for d in range(d+1)], axis=1)
     
     return x, y
 
@@ -82,7 +77,7 @@ def gen_sample(n, d = 0):
 def logit_model(x, y):
     model = LogisticRegression(fit_intercept = False, C=1e5)
     
-    # if the model doe not get two classes; i.e. the output has only 1s or only 0s
+    # if the model does not get two classes; i.e. the output has only 1s or only 0s
     # Then no valid model can be made and the logistic regression fails on a
     # ValueError. In that case we will return None to indicate to the calling 
     # function that failure happened.
