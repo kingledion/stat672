@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
+
 import numpy as np, matplotlib.pyplot as plt
 from sklearn.linear_model import LogisticRegression
+#from datetime import datetime
 
 def prob1c():
     x, y = gen_sample(1)
@@ -17,6 +19,7 @@ def prob1e():
         for n in [10, 20, 50, 100, 200, 500, 1000]:
             scores = [get_scores(n, d) for _ in range(50)]
             data[d].append((n, *[np.mean(x) for x in zip(*scores)]))
+            
 
     for d in [1, 2, 5]:
         n, erremp, errgen = zip(*data[d])
