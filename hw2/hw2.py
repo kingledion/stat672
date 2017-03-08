@@ -4,11 +4,6 @@ import numpy as np, matplotlib.pyplot as plt
 from sklearn.linear_model import LogisticRegression
 #from datetime import datetime
 
-def main():
-    prob1c()
-    prob1d()
-    prob1e()
-
 def prob1c():
     x, y = gen_sample(1)
     print(x, y)
@@ -38,11 +33,10 @@ def prob1e():
 
 # use the logit_model function to generate a training set and get error scores, 
     #then get error scores on a different independent sample
-# argument n and d are as in gen_sample
+# argument n and d are as in gen_sample()
 # returns error scores for the training set and independent set, respectively
 def get_scores(n, d):
-
-    # run logit_model until a successful sample is obtained. See not in that logit_model()
+    # run logit_model until a successful sample is obtained. See note in that logit_model()
     m = None
     while not m:
         training = gen_sample(n, d)
@@ -52,10 +46,7 @@ def get_scores(n, d):
     errgen = m.score(*gen_sample(1000, d))
     
     return erremp, errgen
-    
-    
-        
-            
+              
 # Generate a sample x and y
 # argument n is the number of samples, d is the number of dimension for exponentialion of x
 # output x is an [n x d] matrix where column 0 is ones, column 1 is random numbers and columns 2 to d are x[1]**d
@@ -63,13 +54,12 @@ def get_scores(n, d):
 # output y is an n length 1-dim array containing y values generated from comparing a randomly generated number
     # to either 0.9 or 0.2 depending on the value of x       
 def gen_sample(n, d = 0):
-
     x = np.random.random(n)
     y = np.random.random(n)
     y = np.select([(x<0.2)+(x>0.8), True], [y<0.9, y<0.2])
     
     if d > 0:
-        x = np.stack([x**d for d in range(d+1)], axis=1)
+        x = np.stack([x**i for i in range(d+1)], axis=1)
     
     return x, y
 
@@ -77,8 +67,8 @@ def gen_sample(n, d = 0):
 def logit_model(x, y):
     model = LogisticRegression(fit_intercept = False, C=1e5)
     
-    # if the model does not get two classes; i.e. the output has only 1s or only 0s
-    # Then no valid model can be made and the logistic regression fails on a
+    # if the model does not get two classes; i.e. the response array has only 1s or only 0s,
+    # then no valid model can be made and the logistic regression fails on a
     # ValueError. In that case we will return None to indicate to the calling 
     # function that failure happened.
     try:
@@ -87,5 +77,8 @@ def logit_model(x, y):
         return None
     return model
                              
-    
-main()
+if __name__ == '__main__':
+    prob1c()
+    prob1d()
+    prob1e()
+
