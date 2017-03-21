@@ -1,6 +1,7 @@
 'Oak Grove';42.437;-71.071
 'Malden Center';42.427;-71.073
 'Wellington';42.401;-71.077
+'Assembly';42.393;-71.077
 'Sullivan Square';42.384;-71.077
 'Community College';42.374;-71.070
 'North Station';42.367;-71.062
@@ -8,9 +9,9 @@
 'State';42.359;-71.057
 'Downtown Crossing';42.355;-71.060
 'Chinatown';42.353;-71.062
-'Tufts Medical Center';43.350;-71.064
+'Tufts Medical Center';42.350;-71.064
 'Back Bay';42.347;-71.075
-'Mass Ave';42.341;71.084
+'Mass Ave';42.341;-71.084
 'Ruggles';42.337;-71.089
 'Roxbury Crossing';42.331;-71.095
 'Jackson Square';42.323;-71.100

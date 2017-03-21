@@ -37,7 +37,7 @@ def sphereVectorGen(d, n):
     
     Theta = np.random.randn(n, d)
     R = random.rand(n)**(1.0/d)
-    vectors = Theta * (R / np.linalg.norm(Theta, axis=1, keepdims))
+    vectors = Theta * np.reshape(R / np.linalg.norm(Theta, axis=1), (n, 1))
     
     #vectors = []
     
@@ -87,3 +87,17 @@ def prob_2a():
     #probability approaches 1
 
 main()
+
+def test():
+    startTime = datetime.now()
+    for i in range(10):
+        cartVectorGen(2, 10000)
+    print("Part a - runtime:", datetime.now() - startTime)
+        
+    startTime = datetime.now()
+    for i in range(10):
+        sphereVectorGen(2, 10000)
+    print("Part a - runtime:", datetime.now() - startTime)
+    
+
+    
