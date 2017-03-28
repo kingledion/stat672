@@ -37,7 +37,7 @@ n_test = test.shape[0]
 # part d
 
 # center y
-y_test = y_test = np.mean(y_test)
+y_test = y_test - np.mean(y_test)
 y_train = y_train - np.mean(y_train)
 
 # standardize test and training
