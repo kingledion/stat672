@@ -61,8 +61,8 @@ def ridge_reg():
     
     for l in lam:
         slam = np.diag(s/(s**2+2**l))
-        wridge = np.dot(V, np.dot(slam, Uy))
-        errors.append((1/n_test)*np.linalg.norm(y_test - np.dot(test, wridge)))
+        wridge = np.dot(V.T, np.dot(slam, Uy))
+        errors.append((1/n_test)*np.linalg.norm(y_test - np.dot(test, wridge))**2)
         print(l, errors[-1])
     
     mindex = errors.index(min(errors))
@@ -85,7 +85,7 @@ def lasso_reg():
     for l in lam:
         lasso = linear_model.Lasso(alpha=lam_factor*2**l)
         lasso.fit(training, y_train)
-        errors.append((1/n_test)*np.linalg.norm(y_test - lasso.predict(test)))
+        errors.append((1/n_test)*np.linalg.norm(y_test - lasso.predict(test))**2)
         print(l, errors[-1])
         
     mindex = errors.index(min(errors))
