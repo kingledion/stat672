@@ -12,11 +12,11 @@ translate = {'A': 10, 'B': 60, 'C': 175, 'E': 375, 'F': 750, 'G': 1750, 'H': 375
 #  [2] = employment (int)
 
 def main():
-    #sqlhaversine()
-    #data = read_files()
-    #data = assign_zips(data)
-    #insert_data(data)
-    #fix_no_geo_data()
+    sqlhaversine()
+    data = read_files()
+    data = assign_zips(data)
+    insert_data(data)
+    fix_no_geo_data()
     merge_smalls() #FIX MEEEEE!!!!!
     #gen_adjacents()
     

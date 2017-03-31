@@ -83,14 +83,15 @@ def est_density(cursor, lon, lat):
     
     adj = est_adjacent(cursor, lon, lat)
 
-    data = [(haversine(z['lon'], z['lat'], lon, lat), z['pop']/z['area'], z['emp']/z['area'], z['pay']/z['area'], z['area'], z['zipcode']) for z in adj]
+    data = [(haversine(z['lon'], z['lat'], lon, lat), z['pop']/z['area'], z['emp']/z['area'], z['pay']/z['area'], z['house']/z['area'], z['area']) for z in adj]
     
-    dist_total = sum(d[4]/d[0] for d in data)
-    popdensity = sum(d[1]*d[4]/d[0] for d in data)/dist_total
-    empdensity = sum(d[2]*d[4]/d[0] for d in data)/dist_total
-    paydensity = sum(d[3]*d[4]/d[0] for d in data)/dist_total
+    dist_total = sum(d[-1]/d[0] for d in data)
+    popdensity = sum(d[1]*d[-1]/d[0] for d in data)/dist_total
+    empdensity = sum(d[2]*d[-1]/d[0] for d in data)/dist_total
+    paydensity = sum(d[3]*d[-1]/d[0] for d in data)/dist_total
+    housedensity = sum(d[4]*d[-1]/d[0] for d in data)/dist_total
       
-    return {'popdensity': popdensity, 'empdensity': empdensity, 'paydensity': paydensity}
+    return {'popdensity': popdensity, 'empdensity': empdensity, 'paydensity': paydensity, 'housedensity': housedensity}
     
     
 def haversine(lon1, lat1, lon2, lat2):
