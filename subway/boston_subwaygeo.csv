@@ -1,7 +1,6 @@
 'Oak Grove';42.437;-71.071
 'Malden Center';42.427;-71.073
 'Wellington';42.401;-71.077
-'Assembly';42.393;-71.077
 'Sullivan Square';42.384;-71.077
 'Community College';42.374;-71.070
 'North Station';42.367;-71.062
@@ -58,7 +57,7 @@
 'Prudential';42.346;-71.081
 'Symphony';42.342;-71.086
 'Museum of Fine Arts';42.338;-71.095
-'Longwood';42.336;-71.100
+'Longwood Medical';42.336;-71.100
 'Brigham Cirle';42.335;-71.104
 'Fenwood Road';42.334;-71.106
 'Mission Park';42.333;-71.110
@@ -84,6 +83,7 @@
 'Hawes Street';42.345;-71.111
 'Kent Street';42.344;-71.114
 'Saint Paul Street';42.343;-71.117
+'Coolidge Corner';42.342;-71.121
 'Summit Ave';42.341;-71.126
 'Brandon Hall';42.340;-71.129
 'Fairbanks Street';42.340;-71.131
@@ -104,6 +104,12 @@
 'Griggs Street';42.349;-71.135
 'Allston Street';42.349;-71.138
 'Warren Street';42.348;-71.140
+'Washington Street';42.344;-71.143
+'Sutherland Road';42.341;-71.146
+'Chiswick Road';42.341;-71.151
+'Chestnut Hill Ave';42.338;-71.153
+'South Street';42.339;-71.157
+'Boston College';42.340;-71.167
 
 
 

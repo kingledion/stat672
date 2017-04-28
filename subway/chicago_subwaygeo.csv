@@ -28,10 +28,10 @@
 'Chicago P-B';41.897;-87.636
 'Merchandise Mart';41.889;-87.634
 'Clark-Lake';41.886;-87.632
-'State-Lake';41.885;-87.628
+'State-Lake-Washington';41.885;-87.628
 'Randolph-Wabash';41.884;-87.626
 'Adams-Wabash';41.880;-87.626
-'Wahington Library';41.878;-87.629
+'Wahington Library-Jackson';41.878;-87.629
 'LaSalle-Van Buren';41.877;-87.632
 'Quincy-Wells';41.879;-87.634
 'Washington-Wells';41.883;-87.634
@@ -40,13 +40,12 @@
 'Chicago R';41.897;-87.628
 'Grand R';41.892;-87.628
 'Monroe';41.880;-87.629
-'Jackson';41.879;-87.629
 'Harrison';41.874;-87.628
 'Roosevelt';41.867;-87.627
 'Cermak-Chinatown';41.854;-87.631
 'Sox-35th';41.831;-87.631
-'47th';41.810;-87.631
-'Garfield';41.795;-87.631
+'47th R';41.810;-87.631
+'Garfield R';41.795;-87.631
 '63rd';41.781;-87.631
 '69th';41.769;-87.626
 '79th';41.751;-87.625
@@ -66,8 +65,7 @@
 'O'Hare';41.978;-87.904
 'Rosemont';41.984;-87.860
 'Cumberland';41.984;-87.838
-'Harlem';41.982;-87.807
-'Gladstone Park';41.980;-87.778
+'Harlem N';41.982;-87.807
 'Jefferson Park';41.971;-87.763
 'Montrose Bl';41.961;-87.744
 'Irving Park Bl';41.953;-87.729
@@ -80,6 +78,66 @@
 'Division';41.904;-87.668
 'Chicago B';41.896;-87.655
 'Grand B';41.891;-87.648
+'LaSalle';41.875;-87.631
+'Clinton B';41.875;-87.641
+'UIC Halstead';41.875;-87.649
+'Racine';41.876;-87.657
+'Illinois Medical District';41.876;-87.673
+'Western BS';41.875;-87.688
+'Kedzie-Homan';41.874;-87.706
+'Pulaski B';41.874;-87.728
+'Cicero B';41.872;-87.745
+'Austin B';41.871;-87.777
+'Oak Park B';41.872;-87.792
+'Harlem S';41.873;-87.807
+'Forest Park';41.874;-87.817
+'Harlem/Lake';41.887;-87.804
+'Oak Park G';41.887;-87.794
+'Ridgeland';41.887;-87.784
+'Austin G';41.887;-87.774
+'Central';41.887;-87.766
+'Laramie';41.887;-87.755
+'Cicero G';41.887;-87.745
+'Pulaski G';41.885;-87.726
+'Conservatory-Central Park';41.885;-87.717
+'Kedzie G';41.884;-87.706
+'California G';41.884;-87.696
+'Ashland P-G';41.85;-87.667
+'Morgan';41.886;-87.652
+'Clinton P-G';41.886;-87.642
+'Cermak McCormick';41.853;-87.626
+'35th-Bronzeville-IIT';41.832;-87.626
+'Indiana';41.822;-87.621
+'43rd';41.816;-87.619
+'47th G';41.809;-87.619
+'51st';41.802;-87.619
+'Garfield G';41.795;-87.618
+'Halstead G';41.779;-87.644
+'Ashland/63rd';41.779;-87.664
+'King Drive';41.780;-87.616
+'Cottage Grove';41.780;-87.606
+'54th/Cermak';41.852;-87.757
+'Cicero P';41.852;-87.745
+'Kostner';41.854;-87.733
+'Pulaski P';41.854;-87.724
+'Central Park';41.854;-87.715
+'Kedzie P';41.854;-87.706
+'California P';41.854;-87.695
+'Damen P';41.8554;-87.676
+'18th';41.858;-87.669
+'Polk';41.872;-87.669
+'Halstead O';41.847;-87.648
+'Ashland O';41.839;-87.665
+'35/Archer';41.829;-87.681
+'Western O';41.804;-87.684
+'Kedzie O';41.804;-87.704
+'Pulaski O';41.800;-87.724
+'Midway';41.787;-87.738
+
+
+
+
+
 
 
 

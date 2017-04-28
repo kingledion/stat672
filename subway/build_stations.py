@@ -32,6 +32,9 @@ class station:
     def __eq__(self, other):
         return True if self._data['lat'] == other._data['lat'] and  self._data['lon'] == other._data['lon'] else False
 
+    def getDict(self):
+        return self._data
+
 def is_station(station, idx, pts):
     return [next(idx.nearest((*p, *p), 1, objects='raw')) == s for p in pts]   
     
@@ -55,7 +58,6 @@ with open('/opt/school/stat672/subway/boston_subwaygeo.csv', 'r') as csvin:
             
     print("Density estimate and index built")
     
-
 # calculate latitude degrees to 1 km
 ns_deg = 1.0/110.574
 
@@ -78,18 +80,25 @@ for s in stations:
     # area of a 1km radius circle is pi
     print(s['name'], "{0:.2f}".format(count*pi/n))
     s['area'] = count*pi/n
+     
+
     
 arealist = sorted(stations, key=lambda x: x['area'])
-for s in arealist:
-    print(s['name'], s['area'])
+with open("/opt/school/stat672/subway/boston_stations.csv" , 'w') as outfile:
+    fields = arealist[0].getDict().keys()
+    wrtr = csv.DictWriter(outfile, fieldnames = fields)
     
-input()
+    wrtr.writeheader()
+    for s in arealist:
+        wrtr.writerow(s.getDict())
     
-printlist = sorted(stations, key=lambda x: x['area'] * (x['popdensity'] + x['empdensity']))
 
-keys = ['popdensity', 'empdensity', 'paydensity', 'housedensity']
-for s in printlist:
-    print(", ".join([s['name']] + [str(int(s[k]*s['area'])) for k in keys]))
+    
+#printlist = sorted(stations, key=lambda x: x['area'] * (x['popdensity'] + x['empdensity']))
+#
+#keys = ['popdensity', 'empdensity', 'paydensity', 'housedensity']
+#for s in printlist:
+#    print(", ".join([s['name']] + [str(int(s[k]*s['area'])) for k in keys]))
 
 
         
