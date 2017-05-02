@@ -1,0 +1,27 @@
+\documentclass{article}
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+\setlength{\parskip}{\baselineskip}%
+\setlength{\parindent}{0pt}%
+
+\title{Homework 6}
+\author{Daniel Hartig}
+
+
+\begin{document}
+\maketitle
+
+\subsection*{1 a.}
+
+Each decision stump classifies by assigning all values either greater than or less than $t$ to one label class, and the rest of the samples to the other label class. The decision stump must both optimize the value of $t$ and the greater than or less than comparator, which is the $c_1$ and $c_2$ component. This stump will only use one feature to make its decision.
+
+A stump has very little power for good classification. Firstly, it is only using a single feature. If the real relationship between the features and predicted outcomes is complex, any method using a single feature would be barely better than random guessing. Secondly, the stump classifies based solely on the comparison relationship to $t$, so its power is not great. 
+
+
+
+
+
+\end{document}

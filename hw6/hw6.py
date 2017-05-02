@@ -150,8 +150,8 @@ def adapt(features, labels, weights, M, tests = None):
         
         if tests:
             Xtest, ytest = tests
-            print(">>>", stumps[-1])
-            #print(i, compare(Xtest, ytest, stumps))
+            #print(">>>", stumps[-1])
+            print(i, compare(Xtest, ytest, stumps))
             #print(a_m)
             #input()
     return stumps
