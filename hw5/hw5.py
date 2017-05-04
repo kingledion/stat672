@@ -199,7 +199,7 @@ def powerset(num):
 
     # Some of the features may have variance zero. These features should have a 
     # standardized representation of zero. If we detect such a warning, we use
-    # try_nan_to_num to replaces the 'nan' from the divide by zero std operation
+    # nan_to_num to replaces the 'nan' from the divide by zero std operation
     # with a zero. We also convert the warning to be raised instead of printed
     # so we can catch and ignore it instead of dirtying up the screen.
 def std_features(X, mean, std):
