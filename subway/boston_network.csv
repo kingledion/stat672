@@ -17,45 +17,52 @@
 'Orange';'Stony Brook';'Green';2
 'Orange';'Green';'Forest Hills';2
 
-'Alewife';11221
-'Davis';12857
-'Porter';8850
-'Harvard';23199
-'Central';16525
-'Kendall/MIT';15433
-'Charles/MGH';12065
-'Park Street';19653
-'South Station';25037
-'Broadway';5264
-'Andrew';6425
-'JFK/UMass';8920
-'Savin Hill';2440
-'Fields Corner';5298
-'Shawmut';2411
-'Ashmont/Peabody Sq.';9293
-'North Quincy';6975
-'Wollaston';4624
-'Quincy Center';8655
-'Quincy Adams';4785
-'Braintree';5122
-'Bowdoin';1526
-'Government Center';10828
-'Aquarium';4776
-'Maverick';10106
-'Airport';7429
-'Wood Island';2507
-'Orient Heights';2833
-'Suffolk Downs';1125
-'Beachmont';3042
-'Revere Beach';3197
-'Wonderland';6105
-'Lechmere';6421
-'Science Park';1042
-'Boylston Street';6826
-'Arlington';8519
-'Copley';14021
-'Prudential';3643
-'Symphony';1711
+'Red';'Alewife';'Davis';3.5
+'Red';'Davis';'Porter';2.5
+'Red';'Porter';'Harvard';3
+'Red';'Harvard';'Central';3.5
+'Red';'Central';'Kendall/MIT';2.5
+'Red';'Kendall/MIT';'Charles/MGH';2.5
+'Red';'Charles/MGH';'Park Street';3
+'Red';'Park Street';'Downtown Crossing';2
+'Red';'Downtown Crossing';'South Station';2.5
+'Red';'South Station';'Broadway';3
+'Red';'Broadway';'Andrew';2.5
+'Red';'Andrew';'JFK/UMass';2.5
+'Red';'JFK/UMass';'Savin Hill';2
+'Red';'Savin Hill';'Fields Corner';3
+'Red';'Fields Corner';'Shawmut';2
+'Red';'Shawmut';'Ashmont/Peabody Sq.';2.5
+'Red';'JFK/UMass';'North Quincy';7
+'Red';'North Quincy;'Wollaston';2.5
+'Red';'Wollaston';'Quincy Center';3
+'Red';'Quincy Center';'Quincy Adams';3.5
+'Red';'Quincy Adams';'Braintree';4
+
+'Blue';'Bowdoin';'Government Center';2
+'Blue';'Government Center';'State';2
+'Blue';'State';'Aquarium';2
+'Blue';'Aquarium';'Maverick';2.5
+'Blue';'Maverick';'Airport';2
+'Blue';'Airport';'Wood Island';2
+'Blue';'Wood Island';'Orient Heights';2
+'Blue';'Orient Heights';'Suffolk Downs';2
+'Blue';'Suffolk Downs';'Beachmont';2
+'Blue';'Beachmont';'Revere Beach;2
+'Blue';'Revere Beach';'Wonderland;2
+
+'Lechmere';'Science Park'
+'Science Park';'North Station'
+'North Station';'Haymarket'
+'Haymarket';'Government Center'
+'Government Center';'Park Street'
+'Park Street';'Boylston Street'
+'Boylston Street';'Arlington'
+'Arlington';'Copley'
+'Copley';'Prudential'
+'Prudential';'Symphony'
+'Symphony';'Northeastern'
+'Northeastern';'Museum of Fine Arts'
 'Museum of Fine Arts';1683
 'Longwood Medical';3813
 'Brigham Cirle';2547
