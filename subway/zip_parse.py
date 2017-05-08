@@ -1,15 +1,16 @@
-#! /home/dhartig/Downloads/anaconda3/bin/python
-
 import mysql.connector, csv, subway_utils as su
 from subway_assignments import zip_assigns
 
 translate = {'A': 10, 'B': 60, 'C': 175, 'E': 375, 'F': 750, 'G': 1750, 'H': 3750, 'I': 7500, 'J': 17500, 'K': 37500, 'L': 75000, 'M': 125000}
 
-# data is a hash matching zip codes to datasets. The zip codes are stored as strings, not as integers
-# The data hashed to is stored in a tuple as follows
-#  [0] = name (string)
-# 	[1] = population (int)
-#  [2] = employment (int)
+#################################################################
+# NOTE
+#   Requires mysql installed on your computer using the standard ports
+#   For mysql, create a database named 'zipcode' and a user 
+#   with username 'dbuser' and password 'dbpass'. This user must be 
+#   given 'GRANT ALL ON zipcode'.
+#   Alternately, make your own username, password, and database and 
+#   enter into the connect statements (copy paste should suffice)
 
 def main():
     sqlhaversine()
@@ -17,7 +18,7 @@ def main():
     data = assign_zips(data)
     insert_data(data)
     fix_no_geo_data()
-    merge_smalls() #FIX MEEEEE!!!!!
+    merge_smalls() 
     #gen_adjacents()
     
     
