@@ -83,7 +83,7 @@ def scoreRidge(a, Xtrain, ytrain, Xtest, ytest):
     return (model.score(Xtrain, ytrain), model.score(Xtest, ytest))
         
 def scoreLASSO(a, Xtrain, ytrain, Xtest, ytest):
-    model = lm.Lasso(alpha = a, fit_intercept=False, precompute=True)
+    model = lm.Lasso(alpha = a, fit_intercept=False, precompute=True, max_iter=100000)
     model.fit(Xtrain, ytrain)   
     #print(["{0:.2f}".format(x) for x in model.coef_])
     return (model.score(Xtrain, ytrain), model.score(Xtest, ytest))
