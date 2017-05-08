@@ -23,17 +23,18 @@ def std_features(X, mean, std):
 with open("/opt/school/stat672/subway/boston_stations.csv") as csvin:
     sdata = pd.read_csv(csvin)
 with open('/opt/school/stat672/subway/boston_subway_ridership.csv') as csvin:
-    rdata = pd.read_csv(csvin, delimiter = ';', names = ['name', 'riders'])
+    rdata = pd.read_csv(csvin, delimiter = ';', quotechar = "'", names = ['name', 'riders'])
 data1 = pd.merge(sdata, rdata, how = 'inner', on='name')
     
 with open("/opt/school/stat672/subway/chicago_stations.csv") as csvin:
     sdata = pd.read_csv(csvin)  
 with open('/opt/school/stat672/subway/chicago_subway_ridership.csv') as csvin:
-    rdata = pd.read_csv(csvin,  delimiter = ';', names = ['name', 'riders'])  
+    rdata = pd.read_csv(csvin,  delimiter = ';', quotechar = "'", names = ['name', 'riders'])  
 data2 = pd.merge(sdata, rdata, how = 'inner', on='name')
     
 # Select columns for use in regression
-fields = ['popnear', 'housenear', 'empnear', 'paynear', 'popwalk', 'housewalk', 'empwalk', 'paywalk', 'popdrive', 'housedrive', 'parking']
+fields = ['popnear', 'housenear', 'empnear', 'paynear', 'popwalk', 'housewalk', 'empwalk', 'paywalk', 'popdrive', 'housedrive', 'parking',
+          '15empnet','30empnet','60empnet','15housenet','30housenet','60housenet','15paynet','30paynet','60paynet','15popnet','30popnet','60popnet']
 X1 = data1.as_matrix(columns=fields)
 X2 = data2.as_matrix(columns=fields)
 
@@ -53,13 +54,17 @@ y2std = std_features(y2, ymn, yst)
 def scoreLsq(Xtrain, ytrain, Xtest, ytest):
 
     coeff, resid, rank, s = np.linalg.lstsq(Xtrain, ytrain)
+    
+    predicted = np.dot(Xtrain, coeff)
     sstot = sum((ytrain - np.ones(ytrain.shape)*np.mean(ytrain))**2)
-    sc1 = 1-resid[0]/sstot
+    ssres = sum((ytrain - predicted)**2)
+    sc1 = 1-ssres/sstot
+    
     predicted = np.dot(Xtest, coeff)
     sstot = sum((ytest - np.ones(ytest.shape)*np.mean(ytest))**2)
     ssres = sum((ytest - predicted)**2)
     sc2 = 1-ssres/sstot
-    print(["{0:.2f}".format(x) for x in coeff])
+    #print(["{0:.2f}".format(x) for x in coeff])
     return (sc1, sc2)
     
 def scorePolyLsq(Xtrain, ytrain, Xtest, ytest):
@@ -74,13 +79,13 @@ def scoreRBFSVR(c, Xtrain, ytrain, Xtest, ytest):
 def scoreRidge(a, Xtrain, ytrain, Xtest, ytest):
     model = lm.Ridge(alpha = a, fit_intercept = False, solver='svd')    
     model.fit(Xtrain, ytrain)   
-    print(["{0:.2f}".format(x) for x in model.coef_])
+    #print(["{0:.2f}".format(x) for x in model.coef_])
     return (model.score(Xtrain, ytrain), model.score(Xtest, ytest))
         
 def scoreLASSO(a, Xtrain, ytrain, Xtest, ytest):
     model = lm.Lasso(alpha = a, fit_intercept=False, precompute=True)
     model.fit(Xtrain, ytrain)   
-    print(["{0:.2f}".format(x) for x in model.coef_])
+    #print(["{0:.2f}".format(x) for x in model.coef_])
     return (model.score(Xtrain, ytrain), model.score(Xtest, ytest))
     
 
@@ -98,7 +103,7 @@ for a in [40]:
     print("Train=Boston; Test=Chicago: {0:.3f}, {1:.3f}".format(*scoreRidge(a, X1std, y1std, X2std, y2std)))
     print("Train=Chicago; Test=Boston: {0:.3f}, {1:.3f}".format(*scoreRidge(a, X2std, y2std, X1std, y1std)))
 
-for a in [0.2]:
+for a in [8]:
     print('\nLASSO Regression (alpha = {0})'.format(a))
     print("Train=Boston; Test=Chicago: {0:.3f}, {1:.3f}".format(*scoreLASSO(a, X1std, y1std, X2std, y2std)))
     print("Train=Chicago; Test=Boston: {0:.3f}, {1:.3f}".format(*scoreLASSO(a, X2std, y2std, X1std, y1std)))
