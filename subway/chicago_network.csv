@@ -1,5 +1,5 @@
-'Purple';'Linden';;'Central';2
-'Purple';'Central';;'Noyes';1
+'Purple';'Linden';;'Central P';2
+'Purple';'Central P';;'Noyes';1
 'Purple';'Noyes';;'Foster';1
 'Purple';'Foster';;'Davis';2
 'Purple';'Davis';;'Dempster';1
@@ -205,8 +205,8 @@
 'Green';'Harlem/Lake';;'Oak Park G';2
 'Green';'Oak Park G';;'Ridgeland';1
 'Green';'Ridgeland';;'Austin G';2
-'Green';'Austin G';;'Central';1
-'Green';'Central';;'Laramie';2
+'Green';'Austin G';;'Central G';1
+'Green';'Central G';;'Laramie';2
 'Green';'Laramie';;'Cicero G';2
 'Green';'Cicero G';;'Pulaski G';2
 'Green';'Pulaski G';;'Conservatory-Central Park';1

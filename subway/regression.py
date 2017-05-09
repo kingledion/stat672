@@ -31,10 +31,15 @@ with open("/opt/school/stat672/subway/chicago_stations.csv") as csvin:
 with open('/opt/school/stat672/subway/chicago_subway_ridership.csv') as csvin:
     rdata = pd.read_csv(csvin,  delimiter = ';', quotechar = "'", names = ['name', 'riders'])  
 data2 = pd.merge(sdata, rdata, how = 'inner', on='name')
+
+#f = ['name', 'popnear', 'housenear', 'empnear', 'paynear', 'riders'] #['name', '15popnet', 'popnear']
+#print(data1[f])
+#print(data2[f])
     
 # Select columns for use in regression
 fields = ['popnear', 'housenear', 'empnear', 'paynear', 'popwalk', 'housewalk', 'empwalk', 'paywalk', 'popdrive', 'housedrive', 'parking',
           '15empnet','30empnet','60empnet','15housenet','30housenet','60housenet','15paynet','30paynet','60paynet','15popnet','30popnet','60popnet']
+#fields = ['popnear', 'housenear', 'empnear', 'paynear']
 X1 = data1.as_matrix(columns=fields)
 X2 = data2.as_matrix(columns=fields)
 
@@ -48,6 +53,10 @@ y2 = np.ravel(data2.as_matrix(columns=['riders']))
 
 # Standardize y vlues
 ymn, yst = np.mean(y1), np.std(y1)
+
+y1cent = y1 - ymn
+y2cent = y2 - np.mean(y2)
+
 y1std = std_features(y1, ymn, yst)
 y2std = std_features(y2, ymn, yst)
 
@@ -56,13 +65,17 @@ def scoreLsq(Xtrain, ytrain, Xtest, ytest):
     coeff, resid, rank, s = np.linalg.lstsq(Xtrain, ytrain)
     
     predicted = np.dot(Xtrain, coeff)
-    sstot = sum((ytrain - np.ones(ytrain.shape)*np.mean(ytrain))**2)
+    sstot = sum((ytrain)**2)# - np.ones(ytrain.shape)*np.mean(ytrain))**2)
     ssres = sum((ytrain - predicted)**2)
+    #for p, a in zip(predicted, ytrain):
+    #    print(p, a)
     sc1 = 1-ssres/sstot
-    
+    #print()
     predicted = np.dot(Xtest, coeff)
-    sstot = sum((ytest - np.ones(ytest.shape)*np.mean(ytest))**2)
+    sstot = sum((ytest)**2)# - np.ones(ytest.shape)*np.mean(ytest))**2)
     ssres = sum((ytest - predicted)**2)
+    #for p, a in zip(predicted, ytest):
+    #    print(p, a)
     sc2 = 1-ssres/sstot
     #print(["{0:.2f}".format(x) for x in coeff])
     return (sc1, sc2)
@@ -93,7 +106,7 @@ print('\nLinear Least Squares Regression')
 print("Train=Boston; Test=Chicago: {0:.3f}, {1:.3f}".format(*scoreLsq(X1, y1, X2, y2)))
 print("Train=Chicago; Test=Boston: {0:.3f}, {1:.3f}".format(*scoreLsq(X2, y2, X1, y1)))
 
-for c in [1.5]:
+for c in [7]:
     print('\nRadial Basis Function SVR (C = {0})'.format(c))
     print("Train=Boston; Test=Chicago: {0:.3f}, {1:.3f}".format(*scoreRBFSVR(c, X1std, y1std, X2std, y2std)))
     print("Train=Chicago; Test=Boston: {0:.3f}, {1:.3f}".format(*scoreRBFSVR(c, X2std, y2std, X1std, y1std)))
@@ -103,7 +116,7 @@ for a in [40]:
     print("Train=Boston; Test=Chicago: {0:.3f}, {1:.3f}".format(*scoreRidge(a, X1std, y1std, X2std, y2std)))
     print("Train=Chicago; Test=Boston: {0:.3f}, {1:.3f}".format(*scoreRidge(a, X2std, y2std, X1std, y1std)))
 
-for a in [8]:
+for a in [0.2]:
     print('\nLASSO Regression (alpha = {0})'.format(a))
     print("Train=Boston; Test=Chicago: {0:.3f}, {1:.3f}".format(*scoreLASSO(a, X1std, y1std, X2std, y2std)))
     print("Train=Chicago; Test=Boston: {0:.3f}, {1:.3f}".format(*scoreLASSO(a, X2std, y2std, X1std, y1std)))

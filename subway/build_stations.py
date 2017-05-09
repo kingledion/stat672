@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import subway_utils as su, csv , numpy as np, networkx as nx, re
+import subway_utils as su, csv , numpy as np, networkx as nx
 from rtree import index
 from math import cos, radians, pi
 import shapely.geometry as shpgeo, shapefile, pandas as pd
@@ -166,9 +166,9 @@ def add_station_network(df, G):
         
         for old, new in nfields:
             
-            df['15' + new] = df.loc[df['name'].isin(within15), old].sum()
-            df['30' + new] = df.loc[df['name'].isin(within30), old].sum()
-            df['60' + new] = df.loc[df['name'].isin(within60), old].sum()   
+            df.set_value(df['name'] == s, '15' + new, df.loc[df['name'].isin(within15), old].sum())
+            df.set_value(df['name'] == s, '30' + new, df.loc[df['name'].isin(within30), old].sum())
+            df.set_value(df['name'] == s, '60' + new, df.loc[df['name'].isin(within60), old].sum())  
             
 #def write_stations(stations, filename):
 #
